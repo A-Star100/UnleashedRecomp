@@ -19,14 +19,24 @@
       "name": "llvm",
       "buildsystem": "simple",
       "build-commands": [
-        "mkdir -p /usr/lib/sdk/llvm18",
-        "tar -xf clang+llvm-18.1.8-x86_64-linux-gnu-ubuntu-18.04.tar --strip-components=1 -C /usr/lib/sdk/llvm18/"
+        "mkdir -p /usr/lib/sdk/llvm18 llvm/extracted",
+        "tar -xJf llvm/*.tar.xz -C llvm/extracted",
+        "tar -xf  llvm/extracted/*.tar --strip-components=1 -C /usr/lib/sdk/llvm18/"
       ],
       "sources": [
         {
-          "type": "archive",
+          "type": "file",
           "url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-18.1.8/clang+llvm-18.1.8-x86_64-linux-gnu-ubuntu-18.04.tar.xz",
-          "sha256": "54ec30358afcc9fb8aa74307db3046f5187f9fb89fb37064cdde906e062ebf36"
+          "sha256": "54ec30358afcc9fb8aa74307db3046f5187f9fb89fb37064cdde906e062ebf36",
+          "dest": "llvm",
+          "only-arches": ["x86_64"]
+        },
+        {
+          "type": "file",
+          "url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-18.1.8/clang+llvm-18.1.8-aarch64-linux-gnu.tar.xz",
+          "sha256": "dcaa1bebbfbb86953fdfbdc7f938800229f75ad26c5c9375ef242edad737d999",
+          "dest": "llvm",
+          "only-arches": ["aarch64"]
         }
       ],
       "cleanup": [ "*" ] 
