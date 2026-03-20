@@ -20,7 +20,7 @@
       "buildsystem": "simple",
       "build-commands": [
         "mkdir -p /usr/lib/sdk/llvm18",
-        "tar clang+llvm-18.1.8-x86_64-linux-gnu-ubuntu-18.04.tar --strip-components=1 -C /usr/lib/sdk/llvm18/"
+        "tar -xf clang+llvm-18.1.8-x86_64-linux-gnu-ubuntu-18.04.tar --strip-components=1 -C /usr/lib/sdk/llvm18/"
       ],
       "sources": [
         {
